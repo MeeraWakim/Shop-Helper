@@ -1,4 +1,4 @@
-# HackTX-2018
+# Shop Helper
 
 # VUE SETUP
 $ npm install
@@ -11,10 +11,3 @@ $ npm audit fix
 $npm run dev
 
 expected feedback: "Project is running at localhost:8081 webpack output is served from /dist/ 404s will fallback to /index.html"... Go to the localhost address in your browser and you should see the project
-
-# DJANGO SETUP
-$ pip install Django
-$ ls django_server
-$ python .\manage.py runserver
-
-$ pip install djangorestframework
