@@ -1,4 +1,4 @@
-# HackTX-2018
+# Shop Helper
 
 # VUE SETUP
 $ npm install
