@@ -45,7 +45,40 @@ export default {
       search: null
       },
         ],
-        grocery_database: ["apples", "pears"],
+        grocery_database: [
+          { name: 'Apples', price: '1'},
+          { name: 'Asparagus', price: '2'},
+          { name: 'Avacados', price: '2'},
+          { name: 'Bacon', price: '5.5'},
+          { name: 'Bananas', price: '0.5'},
+          { name: 'Beef, Ground', price: '4'},
+          { name: 'Beer, Shiner Bock', price: '8'},
+          { name: 'Bread', price: '2.5'},
+          { name: 'Cheerios', price: '3'},
+          { name: 'Provolone Cheese', price: '3'},
+          { name: 'Cheez-its', price: '3'},
+          { name: 'Chicken Breast', price: '4'},
+          { name: 'Coffee', price: '5'},
+          { name: 'Dr Pepper', price: '3'},
+          { name: 'Eggs', price: '2'},
+          { name: 'Garlic', price: '1.5'},
+          { name: 'Grapes', price: '2'},
+          { name: 'Honey', price: '4'},
+          { name: 'Jello', price: '1'} ,  
+          { name: 'Ketchup', price: '3'},
+          { name: 'Mandarins', price: '5'},
+          { name: 'Mayonaise', price: '3'},
+          { name: 'Milk', price: '3.5'},
+          { name: 'Rice', price: '1'},
+          { name: 'Spaghetti', price: '1.5'},
+          { name: 'Spaghetti Sauce', price: '2'},
+          { name: 'Strawberries', price: '3'},
+          { name: 'Soup', price: '1'},
+          { name: 'Turkey', price: '3'},
+          { name: 'Yogurt', price: '1'}
+       
+
+          ],
         model: null,
         hasSaved: false,
       }
@@ -60,7 +93,7 @@ export default {
       },
       customFilter (item, queryText, itemText) {
         const textOne = item.name.toLowerCase()
-        const textTwo = item.abbr.toLowerCase()
+        const textTwo = item.price.toLowerCase()
         const searchText = queryText.toLowerCase()
 
         return textOne.indexOf(searchText) > -1 ||
