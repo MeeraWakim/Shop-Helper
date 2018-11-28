@@ -61,15 +61,17 @@ export default {
         switch1: true,
         flaskdata: 'HelloBitches',
         items: [
-          { header: 'Today' },
-          
-        ],
+          { 
+            //header: 'Today' 
+        
          descriptionLimit: 60,
       entries: [],
       isLoading: false,
       model: null,
       search: null
-      
+      },
+        ],
+        
       }
     },
 
