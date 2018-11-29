@@ -104,6 +104,9 @@ export default {
         this.hasSaved = true
       }
     },
+  
+var sum = array.reduce(function(pv, cv) { return pv + cv; }, 0);
+
   };
 </script>
 
