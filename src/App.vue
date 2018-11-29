@@ -4,13 +4,13 @@
       <v-flex sm5 >
       <v-card>
         <v-list>
-          <template v-for="(item, index) in itemsInList" v-bind:index="index">
+          <template v-for="(item, index) in itemsInList" v-bind:index="index" v-bind:price="price">
             <v-layout align-center>
               <v-checkbox v-model="checkBoxes[index]" hide-details class="shrink mr-2"></v-checkbox>
               <v-autocomplete
                 :items="grocery_database"
                 color="white"
-                item-text="name"
+                item-text="name" 
                 v-model= "itemsInList[index]"
               ></v-autocomplete>
               <v-btn flat @click="clearItem(index)"><v-icon>clear</v-icon></v-btn>
@@ -75,6 +75,38 @@ export default {
           { name: 'Soup', price: '1'},
           { name: 'Turkey', price: '3'},
           { name: 'Yogurt', price: '1'} ],
+
+        price_database:[
+          { price: '1'},
+          { price: '2'},
+          { price: '2'},
+          { price: '5.5'},
+          { price: '0.5'},
+          { price: '4'},
+          { price: '8'},
+          { price: '2.5'},
+          { price: '3'},
+          { price: '3'},
+          { price: '3'},
+          { price: '4'},
+          { price: '5'},
+          { price: '3'},
+          { price: '2'},
+          { price: '1.5'},
+          { price: '2'},
+          { price: '4'},
+          { price: '1'} ,  
+          { price: '3'},
+          { price: '5'},
+          { price: '3'},
+          { price: '3.5'},
+          { price: '1'},
+          { price: '1.5'},
+          { price: '2'},
+          { price: '3'},
+          { price: '1'},
+          { price: '3'},
+          { price: '1'}]  
         model: null,
         hasSaved: false,
         itemsInList: [{}],
@@ -89,7 +121,7 @@ export default {
         this.chosenItem.push(0);
         this.checkBoxes.push(0);
         this.price = this.itemsInList.length;
-        console.log(this.price);
+        
       },
       clearItem(index){
         this.itemsInList.splice(index,1);
@@ -97,6 +129,7 @@ export default {
       },
       autocompleteAdded(){
         console.log("autocomplete triggered");
+        console.log(this.price);
       },
     },
   
