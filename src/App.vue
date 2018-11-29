@@ -1,22 +1,28 @@
 <template>
   <v-app>
-    <v-container fluid px-0>
-      <v-toolbar class="display-3"> Cart Buddy </v-toolbar>
+    
+      <v-toolbar class="display-2"> Cart Buddy </v-toolbar>
+      <v-flex  sm5 >
+      <v-card>
         <v-list>
-          <template v-for="(item, index) in items">
-            <v-layout align-center >
-              <v-checkbox  v-model="includeFiles" hide-details class="shrink mr-2"></v-checkbox>
+          <template v-for="(item, index) in itemsInList" v-bind:index="index">
+            <v-layout align-center>
+              <v-checkbox v-model="checkBoxes[index]" hide-details class="shrink mr-2"></v-checkbox>
               <v-autocomplete
                 :items="grocery_database"
                 :filter="customFilter"
                 color="white"
                 item-text="name"
+                v-model= "itemsInList[index]"
               ></v-autocomplete>
-            </v-layout>     
+              <v-btn flat @click="clearItem(index)"><v-icon>clear</v-icon></v-btn>
+            </v-layout>
           </template>
         </v-list>
-      <v-icon large @click="addItem()">add_shopping_cart</v-icon>
-    </v-container>
+        
+      <v-icon align-left large @click="addItem()">add_shopping_cart</v-icon>
+      </v-card>
+      </v-flex>
   </v-app>
 </template>
 
@@ -30,21 +36,15 @@ export default {
 
     data() {
       return {
+        grocery: '',
         checkbox: false,
         radioGroup: 1,
         switch1: true,
-        flaskdata: 'HelloBitches',
-        items: [
-          { 
-            //header: 'Today' 
-        
-         descriptionLimit: 60,
-      entries: [],
-      isLoading: false,
-      model: null,
-      search: null
-      },
-        ],
+        descriptionLimit: 60,
+        entries: [],
+        isLoading: false,
+        model: null,
+        search: null,
         grocery_database: [
           { name: 'Apples', price: '1'},
           { name: 'Asparagus', price: '2'},
@@ -75,12 +75,12 @@ export default {
           { name: 'Strawberries', price: '3'},
           { name: 'Soup', price: '1'},
           { name: 'Turkey', price: '3'},
-          { name: 'Yogurt', price: '1'}
-       
-
-          ],
+          { name: 'Yogurt', price: '1'} ],
         model: null,
         hasSaved: false,
+        itemsInList: [{}],
+        chosenItem: [{}],
+        checkBoxes: [{}],
       }
     },
 
@@ -89,7 +89,16 @@ export default {
         this.flaskdata = "hi mom";
       },
       addItem(){
-        this.items.push(0);
+        this.itemsInList.push(0);
+        this.chosenItem.push(0);
+        console.log(this.itemsInList);
+      },
+      clearItem(index){
+        this.itemsInList.splice(index,1);
+        console.log(this.itemsInList);
+      },
+      autocompleteAdded(){
+        console.log("autocomplete triggered");
       },
       customFilter (item, queryText, itemText) {
         const textOne = item.name.toLowerCase()
@@ -102,10 +111,9 @@ export default {
       save() {
         this.isEditing = !this.isEditing
         this.hasSaved = true
-      }
+      },
     },
   
-var sum = array.reduce(function(pv, cv) { return pv + cv; }, 0);
 
   };
 </script>
