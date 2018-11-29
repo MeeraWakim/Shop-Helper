@@ -1,8 +1,7 @@
 <template>
   <v-app>
-    
-      <v-toolbar class="display-2"> Cart Buddy </v-toolbar>
-      <v-flex  sm5 >
+      <v-toolbar class="display-2"> Cart Buddy <v-card class="title">item count: {{price}}</v-card></v-toolbar>
+      <v-flex sm5 >
       <v-card>
         <v-list>
           <template v-for="(item, index) in itemsInList" v-bind:index="index">
@@ -10,7 +9,6 @@
               <v-checkbox v-model="checkBoxes[index]" hide-details class="shrink mr-2"></v-checkbox>
               <v-autocomplete
                 :items="grocery_database"
-                :filter="customFilter"
                 color="white"
                 item-text="name"
                 v-model= "itemsInList[index]"
@@ -36,6 +34,7 @@ export default {
 
     data() {
       return {
+        price:20,
         grocery: '',
         checkbox: false,
         radioGroup: 1,
@@ -85,13 +84,12 @@ export default {
     },
 
     methods: {    
-      onClick(){
-        this.flaskdata = "hi mom";
-      },
       addItem(){
         this.itemsInList.push(0);
         this.chosenItem.push(0);
-        console.log(this.itemsInList);
+        this.checkBoxes.push(0);
+        this.price = this.itemsInList.length;
+        console.log(this.price);
       },
       clearItem(index){
         this.itemsInList.splice(index,1);
@@ -99,18 +97,6 @@ export default {
       },
       autocompleteAdded(){
         console.log("autocomplete triggered");
-      },
-      customFilter (item, queryText, itemText) {
-        const textOne = item.name.toLowerCase()
-        const textTwo = item.price.toLowerCase()
-        const searchText = queryText.toLowerCase()
-
-        return textOne.indexOf(searchText) > -1 ||
-          textTwo.indexOf(searchText) > -1
-      },
-      save() {
-        this.isEditing = !this.isEditing
-        this.hasSaved = true
       },
     },
   
